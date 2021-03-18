@@ -161,11 +161,12 @@
 
               <button type="submit" class="btn btn-primary btn-kirim">Kirim</button>
 
-            </button>
-            <button class="btn btn-primary btn-loading d-none" type="button" disabled>
-              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-              Loading...
-            </button>
+              <div class="spinner-border spinner-border-sm btn-loading d-none" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <div class="spinner-grow spinner-grow-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
               </div>
             </form>
           </div>
@@ -193,6 +194,7 @@
       const form = document.forms["Fians-Webs-Contact-Form"];
       const btnKirim = document.querySelector(".btn-kirim");
       const btnLoading = document.querySelector(".btn-loading");
+      const btnSpinners = document.querySelector("btn-spinners");
       const myAlert = document.querySelector(".my-Alert");
 
       form.addEventListener("submit", (e) => {
