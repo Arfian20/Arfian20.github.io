@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="style.css" />
     <title>FiansWebs</title>
   </head>
-  <body id="home">
+  <body onload="initClock()" id="home">
     <!-- Navbar -->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm fixed-top">
@@ -45,6 +45,24 @@
 
     <!-- Jumbotron -->
     <section class="jumbotron text-center">
+        <section class="jam">
+        <div class="datetime">
+        <div class="date">
+          <span id="day">Day</span>:
+          <span id="month">Month</span>,
+          <span id="daynum">00</span>,
+          <span id="year">Year</span>
+        </div>
+        <div class ="time">
+          <span id="hour">00</span>:
+          <span id="minutes">00</span>:
+          <span id="seconds">00</span>
+          <span id="period">PM</span>
+        </div>
+        </div>
+       
+      </section>
+  <br><br>
       <img src="img/uw.jpg" alt="Arfian Surya Abdullah" width="150" class="img-thumbnail" ; />
       <h1 class="display-4">Arfian Surya Abdullah</h1>
       <p class="lead">Mahasiswa | Young Developer</p>
@@ -189,7 +207,7 @@
     <!-- Akhir Footer -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 
-    <script>
+    <script type="text/javascript">
       const scriptURL = "https://script.google.com/macros/s/AKfycbypPNYWCrvLiMTWXmWX1-LpCagp5MtOJ8KbnJtkzjhmvmKauRAHLVcs5lwfvnXvEhgU/exec";
       const form = document.forms["Fians-Webs-Contact-Form"];
       const btnKirim = document.querySelector(".btn-kirim");
@@ -213,7 +231,43 @@
             console.log("Success!", response);
            })
           .catch((error) => console.error("Error!", error.message))
-      });
+      })
+
+      function updateClock() {
+  var now = new Date();
+  var day = now.getDay(),
+      mo = now.getMonth(),
+      dnum = now.getDate(),
+      yr = now.getFullYear(),
+      hou = now.getHours(),
+      min = now.getMinutes(),
+      sec = now.getSeconds(),
+      pe = "EM";
+
+      if(hou == 0){
+        hou = 12;
+      }
+      if(hou > 12){
+        hou = hou - 12;
+        pe = "PM";
+      }
+      Number.prototype.pad = function(digits){
+        for(var n = this.toString(); n.length < digits; n = 0 + n);
+        return n;
+      }
+ 
+  var months = ["Januari", "Februari", "Maret", "April", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+  var week = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
+  var ids = ["day", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+  var values = [week[day], months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+  for (var i = 0; i < ids.length; i++)
+  document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+}
+  function initClock() {
+    updateClock();
+    window.setInterval("updateClock()", 1);
+  }
     </script>
+      
   </body>
 </html>
