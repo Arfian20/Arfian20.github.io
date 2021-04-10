@@ -245,10 +245,10 @@
       pe = "AM";
 
       if(hou == 0){
-    hou = 12;
+    hou = 11.59;
 
   }
-  if(hou == 12){
+  if(hou > 11.59){
     hou = hou - 12;
     pe = "PM";
   }
