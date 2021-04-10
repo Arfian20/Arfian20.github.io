@@ -21,3 +21,21 @@
 //     window.setInterval("updateClock()", 1);
 //   }
 // }
+
+// if(hou == 0){
+//     hou = 12;
+
+//   }
+//   if(hou > 12){
+//     hou = hou - 12;
+//     pe = "PM";
+//   }
+
+// Number.prototype.pad = function(digits){
+//     for(var n = this.toString(); n.length < digits; n = 0 + n);
+//     return n;
+//   }
+
+var weeks = [];
+["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
+var weeks = [];
