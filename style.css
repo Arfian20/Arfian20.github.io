@@ -82,3 +82,10 @@ section {
     background-position: left top;
   }
 }
+.card:hover {
+  border: medium solid rgb(115, 184, 230);
+}
+.card img:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
